@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer.component';
 
 const routes: Routes = [
-  { path: '', component: FooterComponent }
+  { path: '', component: FooterComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
