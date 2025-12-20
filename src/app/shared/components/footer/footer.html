@@ -1,1 +1,145 @@
-<p>footer works!</p>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-widget">
+            <h5 class="footer-title">
+              <i class="bi bi-code-slash me-2"></i>
+              Bootstrap Angular
+            </h5>
+            <p class="footer-text">
+              A modern, responsive web application built with Angular and Bootstrap 5. Experience the power of
+              cutting-edge web technologies combined with beautiful, accessible design.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter" target="_blank" rel="noopener">
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                <i class="bi bi-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="footer-widget">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li>
+                <a routerLink="/" aria-label="Navigate to home">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a routerLink="/about" aria-label="Navigate to about">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  About
+                </a>
+              </li>
+              <li>
+                <a routerLink="/contact" aria-label="Navigate to contact">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a routerLink="/login" aria-label="Navigate to login">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Login
+                </a>
+              </li>
+              <li>
+                <a routerLink="/signup" aria-label="Navigate to signup">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Sign Up
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h5 class="footer-title">Resources</h5>
+            <ul class="footer-links">
+              <li>
+                <a href="https://angular.dev" target="_blank" rel="noopener" aria-label="Angular Documentation">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Angular Docs
+                </a>
+              </li>
+              <li>
+                <a href="https://getbootstrap.com" target="_blank" rel="noopener" aria-label="Bootstrap Documentation">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Bootstrap Docs
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="Documentation">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Documentation
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="Support">
+                  <i class="bi bi-chevron-right me-1"></i>
+                  Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-widget">
+            <h5 class="footer-title">Contact Us</h5>
+            <ul class="footer-contact">
+              <li>
+                <i class="bi bi-envelope me-2"></i>
+                <a href="mailto:info@bootstrapangular.com">info@bootstrapangular.com</a>
+              </li>
+              <li>
+                <i class="bi bi-telephone me-2"></i>
+                <a href="tel:+1234567890">+1 (234) 567-890</a>
+              </li>
+              <li>
+                <i class="bi bi-geo-alt me-2"></i>
+                <span>123 Tech Street, Digital City, DC 12345</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">
+            &copy; {{ currentYear() }} Bootstrap Angular. All rights reserved.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="footer-bottom-links">
+            <a routerLink="/" aria-label="Privacy Policy">Privacy Policy</a>
+            <span class="separator">|</span>
+            <a routerLink="/" aria-label="Terms of Service">Terms of Service</a>
+            <span class="separator">|</span>
+            <a routerLink="/about" aria-label="About Us">About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
