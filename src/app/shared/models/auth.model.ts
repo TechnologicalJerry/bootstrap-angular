@@ -1,15 +1,10 @@
 // models/auth.model.ts
+import { User } from './user.model';
+
 export interface AuthResponse {
   accessToken: string;
   expiresIn: number;
   user: User;
-}
-
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  role: string;
 }
 
 export interface LoginRequest {
