@@ -1,1 +1,99 @@
-<p>login works!</p>
+<div class="login-page">
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center min-vh-75">
+      <div class="col-md-6 col-lg-5">
+        <div class="login-card">
+          <div class="login-header">
+            <div class="login-icon">
+              <i class="bi bi-box-arrow-in-right"></i>
+            </div>
+            <h2 class="login-title">Welcome Back</h2>
+            <p class="login-subtitle">Sign in to your account to continue</p>
+          </div>
+
+          @if (errorMessage()) {
+            <div class="alert alert-danger" role="alert">
+              <i class="bi bi-exclamation-triangle me-2"></i>
+              {{ errorMessage() }}
+            </div>
+          }
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="emailOrUsername" class="form-label">
+                <i class="bi bi-person me-2"></i>
+                Email or Username
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="loginForm.get('emailOrUsername')?.invalid && loginForm.get('emailOrUsername')?.touched"
+                id="emailOrUsername"
+                formControlName="emailOrUsername"
+                placeholder="Enter your email or username"
+                aria-describedby="emailOrUsernameHelp"
+              />
+              @if (getFieldError('emailOrUsername')) {
+                <div class="invalid-feedback">{{ getFieldError('emailOrUsername') }}</div>
+              }
+              <div id="emailOrUsernameHelp" class="form-text">
+                <i class="bi bi-info-circle me-1"></i>
+                You can login with either your email or username
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">
+                <i class="bi bi-lock me-2"></i>
+                Password
+              </label>
+              <input
+                type="password"
+                class="form-control"
+                [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                id="password"
+                formControlName="password"
+                placeholder="Enter your password"
+              />
+              @if (getFieldError('password')) {
+                <div class="invalid-feedback">{{ getFieldError('password') }}</div>
+              }
+            </div>
+
+            <div class="form-group d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" />
+                <label class="form-check-label" for="rememberMe"> Remember me </label>
+              </div>
+              <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="isLoading()">
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Logging in...
+              } @else {
+                <i class="bi bi-box-arrow-in-right me-2"></i>
+                Login
+              }
+            </button>
+
+            <div class="divider">
+              <span>or</span>
+            </div>
+
+            <div class="text-center">
+              <p class="mb-0">
+                Don't have an account?
+                <a routerLink="/signup" class="signup-link">
+                  <i class="bi bi-person-plus me-1"></i>
+                  Sign up here
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
