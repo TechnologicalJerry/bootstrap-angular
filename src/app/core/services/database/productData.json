@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1",
+    "title": "Laptop Pro 15",
+    "description": "High-performance laptop with 16GB RAM and 512GB SSD",
+    "price": 1299.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/300x200?text=Laptop+Pro+15",
+    "stock": 25,
+    "rating": 4.5
+  },
+  {
+    "id": "2",
+    "title": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with long battery life",
+    "price": 29.99,
+    "category": "Accessories",
+    "image": "https://via.placeholder.com/300x200?text=Wireless+Mouse",
+    "stock": 150,
+    "rating": 4.2
+  },
+  {
+    "id": "3",
+    "title": "Mechanical Keyboard",
+    "description": "RGB mechanical keyboard with Cherry MX switches",
+    "price": 149.99,
+    "category": "Accessories",
+    "image": "https://via.placeholder.com/300x200?text=Mechanical+Keyboard",
+    "stock": 50,
+    "rating": 4.7
+  },
+  {
+    "id": "4",
+    "title": "4K Monitor",
+    "description": "27-inch 4K UHD monitor with HDR support",
+    "price": 399.99,
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/300x200?text=4K+Monitor",
+    "stock": 30,
+    "rating": 4.6
+  },
+  {
+    "id": "5",
+    "title": "USB-C Hub",
+    "description": "Multi-port USB-C hub with HDMI, USB 3.0, and SD card reader",
+    "price": 49.99,
+    "category": "Accessories",
+    "image": "https://via.placeholder.com/300x200?text=USB-C+Hub",
+    "stock": 75,
+    "rating": 4.3
+  }
+]
+
