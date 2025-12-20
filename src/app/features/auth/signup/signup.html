@@ -1,1 +1,255 @@
-<p>signup works!</p>
+<div class="signup-page">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-9">
+        <div class="signup-card">
+          <div class="signup-header">
+            <div class="signup-icon">
+              <i class="bi bi-person-plus"></i>
+            </div>
+            <h2 class="signup-title">Create Your Account</h2>
+            <p class="signup-subtitle">Join us and start building amazing applications</p>
+          </div>
+
+          @if (errorMessage()) {
+            <div class="alert alert-danger" role="alert">
+              <i class="bi bi-exclamation-triangle me-2"></i>
+              {{ errorMessage() }}
+            </div>
+          }
+
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">
+                  <i class="bi bi-person me-2"></i>
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched"
+                  id="firstName"
+                  formControlName="firstName"
+                  placeholder="Enter your first name"
+                />
+                @if (getFieldError('firstName')) {
+                  <div class="invalid-feedback">{{ getFieldError('firstName') }}</div>
+                }
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label">
+                  <i class="bi bi-person me-2"></i>
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched"
+                  id="lastName"
+                  formControlName="lastName"
+                  placeholder="Enter your last name"
+                />
+                @if (getFieldError('lastName')) {
+                  <div class="invalid-feedback">{{ getFieldError('lastName') }}</div>
+                }
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="userName" class="form-label">
+                  <i class="bi bi-at me-2"></i>
+                  Username
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched"
+                  id="userName"
+                  formControlName="userName"
+                  placeholder="Choose a username"
+                />
+                @if (getFieldError('userName')) {
+                  <div class="invalid-feedback">{{ getFieldError('userName') }}</div>
+                }
+                <div class="form-text">
+                  <i class="bi bi-info-circle me-1"></i>
+                  Only letters, numbers, and underscores allowed
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">
+                  <i class="bi bi-envelope me-2"></i>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+                  id="email"
+                  formControlName="email"
+                  placeholder="Enter your email"
+                />
+                @if (getFieldError('email')) {
+                  <div class="invalid-feedback">{{ getFieldError('email') }}</div>
+                }
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="password" class="form-label">
+                  <i class="bi bi-lock me-2"></i>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                  id="password"
+                  formControlName="password"
+                  placeholder="Enter your password"
+                />
+                @if (getFieldError('password')) {
+                  <div class="invalid-feedback">{{ getFieldError('password') }}</div>
+                }
+                <div class="form-text">
+                  <i class="bi bi-info-circle me-1"></i>
+                  Must be at least 6 characters
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="confirmPassword" class="form-label">
+                  <i class="bi bi-lock-fill me-2"></i>
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  [class.is-invalid]="
+                    (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordMismatch')) &&
+                    signupForm.get('confirmPassword')?.touched
+                  "
+                  id="confirmPassword"
+                  formControlName="confirmPassword"
+                  placeholder="Confirm your password"
+                />
+                @if (getFieldError('confirmPassword')) {
+                  <div class="invalid-feedback">{{ getFieldError('confirmPassword') }}</div>
+                }
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="phone" class="form-label">
+                  <i class="bi bi-telephone me-2"></i>
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched"
+                  id="phone"
+                  formControlName="phone"
+                  placeholder="Enter your phone number"
+                />
+                @if (getFieldError('phone')) {
+                  <div class="invalid-feedback">{{ getFieldError('phone') }}</div>
+                }
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="gender" class="form-label">
+                  <i class="bi bi-gender-ambiguous me-2"></i>
+                  Gender
+                </label>
+                <select
+                  class="form-select"
+                  [class.is-invalid]="signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched"
+                  id="gender"
+                  formControlName="gender"
+                >
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                @if (getFieldError('gender')) {
+                  <div class="invalid-feedback">{{ getFieldError('gender') }}</div>
+                }
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="dob" class="form-label">
+                  <i class="bi bi-calendar me-2"></i>
+                  Date of Birth
+                </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  [class.is-invalid]="signupForm.get('dob')?.invalid && signupForm.get('dob')?.touched"
+                  id="dob"
+                  formControlName="dob"
+                />
+                @if (getFieldError('dob')) {
+                  <div class="invalid-feedback">{{ getFieldError('dob') }}</div>
+                }
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="role" class="form-label">
+                  <i class="bi bi-person-badge me-2"></i>
+                  Role
+                </label>
+                <select
+                  class="form-select"
+                  [class.is-invalid]="signupForm.get('role')?.invalid && signupForm.get('role')?.touched"
+                  id="role"
+                  formControlName="role"
+                >
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                  <option value="supervisor">Supervisor</option>
+                </select>
+                @if (getFieldError('role')) {
+                  <div class="invalid-feedback">{{ getFieldError('role') }}</div>
+                }
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="isLoading()">
+              @if (isLoading()) {
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Creating account...
+              } @else {
+                <i class="bi bi-person-plus me-2"></i>
+                Create Account
+              }
+            </button>
+
+            <div class="divider">
+              <span>or</span>
+            </div>
+
+            <div class="text-center">
+              <p class="mb-0">
+                Already have an account?
+                <a routerLink="/login" class="login-link">
+                  <i class="bi bi-box-arrow-in-right me-1"></i>
+                  Login here
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
