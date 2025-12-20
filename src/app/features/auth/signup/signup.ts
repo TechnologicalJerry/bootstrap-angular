@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SignupRequest } from '../../../shared/models/auth.model';
+import { Auth } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-signup',
@@ -12,6 +13,8 @@ import { SignupRequest } from '../../../shared/models/auth.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Signup {
+  private readonly auth = inject(Auth);
+  private readonly router = inject(Router);
   protected readonly signupForm: FormGroup;
   protected readonly isLoading = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
@@ -63,14 +66,16 @@ export class Signup {
         role: this.signupForm.value.role,
       };
 
-      // TODO: Implement actual signup service call
-      console.log('Signup data:', signupData);
-
-      // Simulate API call
-      setTimeout(() => {
-        this.isLoading.set(false);
-        // Handle success/error here
-      }, 1000);
+      this.auth.signup(signupData).subscribe({
+        next: () => {
+          this.isLoading.set(false);
+          this.router.navigate(['/']);
+        },
+        error: (error: Error) => {
+          this.isLoading.set(false);
+          this.errorMessage.set(error.message || 'Signup failed. Please try again.');
+        },
+      });
     } else {
       this.markFormGroupTouched(this.signupForm);
     }
