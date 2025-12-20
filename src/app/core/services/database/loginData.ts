@@ -1,0 +1,19 @@
+export const loginData = [
+  {
+    id: '1',
+    email: 'john.doe@example.com',
+    userName: 'johndoe',
+    password: 'password123',
+    name: 'John Doe',
+    role: 'user',
+  },
+  {
+    id: '2',
+    email: 'jane.smith@example.com',
+    userName: 'janesmith',
+    password: 'password123',
+    name: 'Jane Smith',
+    role: 'admin',
+  },
+] as const;
+
