@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginRequest } from '../../../shared/models/auth.model';
+import { Auth } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,16 @@ import { LoginRequest } from '../../../shared/models/auth.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Login {
+  private readonly auth = inject(Auth);
+  private readonly router = inject(Router);
   protected readonly loginForm: FormGroup;
   protected readonly isLoading = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      emailOrUsername: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      emailOrUsername: ['john.doe@example.com', [Validators.required, Validators.minLength(3)]],
+      password: ['password123', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -33,14 +36,16 @@ export class Login {
         password: this.loginForm.value.password,
       };
 
-      // TODO: Implement actual login service call
-      console.log('Login data:', loginData);
-      
-      // Simulate API call
-      setTimeout(() => {
-        this.isLoading.set(false);
-        // Handle success/error here
-      }, 1000);
+      this.auth.login(loginData).subscribe({
+        next: () => {
+          this.isLoading.set(false);
+          this.router.navigate(['/']);
+        },
+        error: (error: Error) => {
+          this.isLoading.set(false);
+          this.errorMessage.set(error.message || 'Login failed. Please check your credentials.');
+        },
+      });
     } else {
       this.markFormGroupTouched(this.loginForm);
     }
